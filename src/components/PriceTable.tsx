@@ -53,32 +53,32 @@ const PriceTable: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black/30 rounded-2xl shadow-lg overflow-hidden">
-      <div className="bg-gradient-to-r from-black-50 to-black-50 px-6 py-4 border-b border-gray-700">
-        <h2 className="text-base font-bold text-gray-200">Current Products Retail Prices</h2>
+    <div className="bg-black/30 rounded-xl lg:rounded-2xl shadow-lg overflow-hidden">
+      <div className="bg-gradient-to-r from-black-50 to-black-50 px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-700">
+        <h2 className="text-sm sm:text-base font-bold text-gray-200">Current Products Retail Prices</h2>
       </div>
       
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-gray-700 bg-black">
-              <th className="text-left px-6 font-semibold text-gray-700"></th>
-              <th className="text-right px-6 font-semibold text-gray-700"></th>
-              <th className="text-right px-6 font-semibold text-gray-700"></th>
+              <th className="text-left px-3 sm:px-6 font-semibold text-gray-700"></th>
+              <th className="text-right px-3 sm:px-6 font-semibold text-gray-700"></th>
+              <th className="text-right px-3 sm:px-6 font-semibold text-gray-700"></th>
             </tr>
           </thead>
           <tbody>
             {priceData.map((item, index) => (
-              <tr key={index} className="border-b border-gray-700 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="font-medium text-white/90">
+              <tr key={index} className="border-b border-gray-700 hover:bg-gray-800/30 transition-colors">
+                <td className="px-3 sm:px-6 py-3 sm:py-4">
+                  <div className="font-medium text-white/90 text-sm sm:text-base">
                     {(() => {
                       const parts = item.product.split(' (');
                       if (parts.length > 1) {
                         return (
                           <>
                             <span>{parts[0]} </span>
-                            <span className="text-gray-400 text-sm">{parts[1]}</span>
+                            <span className="text-gray-400 text-xs sm:text-sm block sm:inline">{parts[1]}</span>
                           </>
                         );
                       }
@@ -86,15 +86,15 @@ const PriceTable: React.FC = () => {
                     })()}
                   </div>
                 </td>
-                <td className="px-6 py-4 text-right">
-                  <div className="font-bold text-lg text-white/90">{item.price}</div>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
+                  <div className="font-bold text-base sm:text-lg text-white/90">{item.price}</div>
                 </td>
-                <td className="px-6 py-4 text-right">
-                  <div className="flex items-center justify-end space-x-2">
-                    <span className={`font-semibold ${item.isPositive ? 'text-emerald-600' : 'text-orange-600'}`}>
+                <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
+                  <div className="flex items-center justify-end space-x-1 sm:space-x-2">
+                    <span className={`font-semibold text-sm sm:text-base ${item.isPositive ? 'text-emerald-600' : 'text-orange-600'}`}>
                       {item.change}
                     </span>
-                    <div className={`flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium ${
+                    <div className={`flex items-center space-x-1 px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       item.isPositive 
                         ? 'bg-green-400 text-slate-200' 
                         : 'bg-orange-500 text-slate-200'

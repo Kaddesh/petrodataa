@@ -159,17 +159,17 @@ const PriceChart: React.FC = () => {
     onToggle: () => void;
     placeholder: string;
   }) => (
-    <div className="relative">
+    <div className="relative min-w-0">
       <button
         onClick={onToggle}
-        className="appearance-none text-green-900 px-1 py-2 text-sm font-medium cursor-pointer  transition-all flex items-center space-x-2 "
+        className="appearance-none text-green-900 px-1 py-2 text-xs sm:text-sm font-medium cursor-pointer transition-all flex items-center space-x-1 sm:space-x-2 whitespace-nowrap"
       >
-        <span>{selected === 'All' ? placeholder : selected}</span>
-        <ChevronDown className="w-4 h-4 ml-2" />
+        <span className="truncate">{selected === 'All' ? placeholder : selected}</span>
+        <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
       </button>
       
       {show && (
-        <div className="absolute top-full left-0 mt-1 w-full bg-gray-800 rounded-lg shadow-xl border border-gray-600 z-[9999] min-w-[140px]">
+        <div className="absolute top-full left-0 mt-1 w-full bg-gray-800 rounded-lg shadow-xl border border-gray-600 z-[9999] min-w-[120px] sm:min-w-[140px]">
           {options.map((option) => (
             <button
               key={option}
@@ -177,10 +177,10 @@ const PriceChart: React.FC = () => {
                 onSelect(option);
                 onToggle();
               }}
-              className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center justify-between first:rounded-t-lg last:rounded-b-lg"
+              className="w-full text-left px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center justify-between first:rounded-t-lg last:rounded-b-lg"
             >
-              <span>{option}</span>
-              {option === selected && <Check className="w-4 h-4 text-green-500" />}
+              <span className="truncate">{option}</span>
+              {option === selected && <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />}
             </button>
           ))}
         </div>
@@ -189,18 +189,18 @@ const PriceChart: React.FC = () => {
   );
 
   const PriceDropdown = () => (
-    <div className="relative">
+    <div className="relative min-w-0">
       <button
         onClick={() => setShowPriceDropdown(!showPriceDropdown)}
-        className="text-sm font-medium text-green-700 flex items-center space-x-2  transition-colors"
+        className="text-xs sm:text-sm font-medium text-green-700 flex items-center space-x-1 sm:space-x-2 transition-colors whitespace-nowrap"
       >
-        <div className="w-2 h-2 bg-green-500 rounded-sm"></div>
-        <span>{selectedPrice}</span>
-        <ChevronDown className="w-4 h-4" />
+        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-sm flex-shrink-0"></div>
+        <span className="truncate">{selectedPrice}</span>
+        <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
       </button>
       
       {showPriceDropdown && (
-        <div className="absolute top-full left-0 mt-1 w-full bg-white rounded-lg shadow-xl border border-gray-200 z-[9999] min-w-[120px]">
+        <div className="absolute top-full left-0 mt-1 w-full bg-white rounded-lg shadow-xl border border-gray-200 z-[9999] min-w-[100px] sm:min-w-[120px]">
           {priceOptions.map((option) => (
             <button
               key={option}
@@ -208,13 +208,13 @@ const PriceChart: React.FC = () => {
                 setSelectedPrice(option);
                 setShowPriceDropdown(false);
               }}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-between first:rounded-t-lg last:rounded-b-lg"
+              className="w-full text-left px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-100 transition-colors flex items-center justify-between first:rounded-t-lg last:rounded-b-lg"
             >
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-sm"></div>
-                <span>{option}</span>
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-sm flex-shrink-0"></div>
+                <span className="truncate">{option}</span>
               </div>
-              {option === selectedPrice && <Check className="w-4 h-4 text-green-500" />}
+              {option === selectedPrice && <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />}
             </button>
           ))}
         </div>
@@ -224,22 +224,22 @@ const PriceChart: React.FC = () => {
 
   return (
     <>
-      <div className="bg-black/30 rounded-2xl shadow-lg">
+      <div className="bg-black/30 rounded-xl lg:rounded-2xl shadow-lg">
         {/* Header */}
-        <div className="px-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <h2 className="text-base font-bold text-gray-200">Retail Price Analysis (NGN)</h2>
-              <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <Download className="w-5 h-5 text-gray-600" />
+        <div className="px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <h2 className="text-sm sm:text-base font-bold text-gray-200">Retail Price Analysis (NGN)</h2>
+              <button className="p-1.5 sm:p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                <Download className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </button>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto">
               {fuelTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => setSelectedFuel(type)}
-                  className={`px-2 py-2 text-sm font-medium transition-colors ${
+                  className={`px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                     selectedFuel === type
                       ? ' text-green-600 shadow-md'
                       : 'text-white hover:text-green-600'
@@ -280,7 +280,7 @@ const PriceChart: React.FC = () => {
         </div> */}
 
         {/* Chart Area */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <div 
             className="cursor-pointer"
             onClick={() => setShowModal(true)}
@@ -289,13 +289,13 @@ const PriceChart: React.FC = () => {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-0.5">
               {periods.map((period) => (
                 <button
                   key={period}
                   onClick={() => setSelectedPeriod(period)}
-                  className={`px-1 py-2 text-sm font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 ${
                     selectedPeriod === period
                       ? 'text-green-600 shadow-lg transform scale-105'
                       : 'text-gray-400 hover:text-green-500'
@@ -306,7 +306,7 @@ const PriceChart: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4 overflow-x-auto">
               <CustomDropdown
                 options={regions}
                 selected={selectedRegion}
@@ -333,38 +333,38 @@ const PriceChart: React.FC = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
               <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
-                <Share className="w-5 h-5" />
-                <span className="text-sm font-medium">Share</span>
+                <Share className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-xs sm:text-sm font-medium hidden sm:inline">Share</span>
               </button>
               <button 
                 onClick={() => setShowModal(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6">
-              <div className="bg-gray-100 rounded-xl p-4">
+            <div className="p-4 sm:p-6 overflow-y-auto">
+              <div className="bg-gray-100 rounded-xl p-2 sm:p-4">
                 <ChartComponent />
               </div>
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-between p-6 border-t border-gray-200">
-              <button className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <div className="flex items-center justify-between p-4 sm:p-6 border-t border-gray-200 gap-2">
+              <button className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
                 <Download className="w-4 h-4" />
-                <span className="font-medium">Download</span>
+                <span className="font-medium hidden sm:inline">Download</span>
               </button>
-              <button className="flex items-center space-x-2 px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+              <button className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm">
                 <Copy className="w-4 h-4" />
-                <span className="font-medium">Copy</span>
+                <span className="font-medium hidden sm:inline">Copy</span>
               </button>
             </div>
           </div>
