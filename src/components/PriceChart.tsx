@@ -162,7 +162,7 @@ const PriceChart: React.FC = () => {
     <div className="relative">
       <button
         onClick={onToggle}
-        className="appearance-none text-green-900 px-4 py-2 pr-8 text-sm font-medium cursor-pointer  transition-all flex items-center space-x-2 "
+        className="appearance-none text-green-900 px-1 py-2 text-sm font-medium cursor-pointer  transition-all flex items-center space-x-2 "
       >
         <span>{selected === 'All' ? placeholder : selected}</span>
         <ChevronDown className="w-4 h-4 ml-2" />
@@ -290,12 +290,12 @@ const PriceChart: React.FC = () => {
 
           {/* Controls */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-0.5">
               {periods.map((period) => (
                 <button
                   key={period}
                   onClick={() => setSelectedPeriod(period)}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                  className={`px-1 py-2 text-sm font-medium transition-all duration-200 ${
                     selectedPeriod === period
                       ? 'text-green-600 shadow-lg transform scale-105'
                       : 'text-gray-400 hover:text-green-500'
