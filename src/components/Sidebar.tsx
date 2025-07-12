@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle, currentPage, set
   ];
 
   return (
-    <div className={`fixed left-0 top-0 h-full bg-black/30 shadow-xl border-r border-gray-200 transition-all duration-300 z-50 ${collapsed ? 'w-20' : 'w-64'}`}>
+    <div className={`fixed left-0 top-0 h-full bg-black/30 shadow-xl border-r border-gray-200 transition-all duration-300 z-50 ${collapsed ? 'w-20' : 'w-56'}`}>
       {/* Header */}
       <div className="flex items-center p-4 border-gray-200">
         <div className={`flex items-center space-x-3 ${collapsed ? 'justify-center' : ''}`}>
