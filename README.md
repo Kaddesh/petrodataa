@@ -1,6 +1,10 @@
 # Petroleum Data Dashboard
 
-A modern, responsive web application for visualizing and analyzing petroleum price data across Nigerian states. Built with React, TypeScript, and Tailwind CSS.
+A modern, responsive web application for visualizing and analyzing petroleum price data across Nigerian states. Built with React, TypeScript, and Tailwind CSS.2
+
+# Project url
+
+https://petrodataa.vercel.app/
 
 ## 🎯 Project Overview
 
@@ -39,35 +43,6 @@ This dashboard provides real-time petroleum price analysis with interactive char
 - **Body**: Medium weight with good readability
 - **Data**: Monospace-friendly for numbers and prices
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn package manager
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd emailtask
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-
 ## 🔧 Problem-Solving Approach
 
 ### 1. Data Management
@@ -91,7 +66,7 @@ interface PetroleumData {
 ```
 
 ### 2. Responsive Design
-**Challenge**: Creating a dashboard that works seamlessly across all device sizes.
+**Challenge**: Creating a dashboard that works seamlessly across all device sizes. Update will proceed today on this to make seemless responsiveness
 
 **Solution**:
 - Implemented mobile-first design with Tailwind CSS
@@ -146,37 +121,6 @@ interface PetroleumData {
 - Clear active state indicators
 - Smooth animations and transitions
 
-## 🔮 Future Enhancements
-
-### Planned Features
-- [ ] Real-time data integration via WebSocket
-- [ ] Advanced analytics and forecasting
-- [ ] User authentication and role-based access
-- [ ] Data export in multiple formats (CSV, PDF, Excel)
-- [ ] Push notifications for price alerts
-- [ ] Historical data comparison tools
-
-### Technical Improvements
-- [ ] Implement Redux for complex state management
-- [ ] Add unit and integration tests
-- [ ] Progressive Web App (PWA) features
-- [ ] Performance monitoring and analytics
-- [ ] Accessibility improvements (WCAG compliance)
-
-## 🐛 Known Issues & Solutions
-
-### Issue 1: Chart Performance on Mobile
-**Problem**: Chart rendering lag on lower-end mobile devices.
-**Solution**: Implemented chart virtualization and reduced data points for mobile views.
-
-### Issue 2: Data Synchronization
-**Problem**: Inconsistent data updates across components.
-**Solution**: Centralized data management with custom hooks and context providers.
-
-### Issue 3: Search Performance
-**Problem**: Slow search with large datasets.
-**Solution**: Implemented debounced search and efficient filtering algorithms.
-
 ## 📱 Browser Support
 
 - Chrome 90+
@@ -185,33 +129,6 @@ interface PetroleumData {
 - Edge 90+
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
-## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **Recharts** for excellent charting capabilities
-- **Tailwind CSS** for rapid UI development
-- **Lucide React** for beautiful icons
-- **Vite** for fast development experience
-
-## 📧 Contact
-
-For questions, suggestions, or collaboration opportunities, please reach out:
-
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
-
----
-
-*Built with ❤️ for the petroleum industry*
