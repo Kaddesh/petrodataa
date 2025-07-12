@@ -85,11 +85,6 @@ const PriceChart: React.FC = () => {
   };
 
   const chartData = generateDataForPeriod(selectedPeriod);
-  const currentPrice = chartData[chartData.length - 1]?.price || 714.26;
-  const previousPrice = chartData[chartData.length - 2]?.price || 714.26;
-  const priceChange = currentPrice - previousPrice;
-  const percentageChange = ((priceChange / previousPrice) * 100);
-  const isPositive = priceChange >= 0;
 
   const CustomTooltip: React.FC<TooltipProps> = ({ active, payload }) => {
     if (active && payload && payload.length) {
