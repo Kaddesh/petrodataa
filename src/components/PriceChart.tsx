@@ -234,12 +234,12 @@ const PriceChart: React.FC = () => {
                 <Download className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </button>
             </div>
-            <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
+            <div className="flex items-center space-x-1 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
               {fuelTypes.map((type) => (
                 <button
                   key={type}
                   onClick={() => setSelectedFuel(type)}
-                  className={`px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                  className={`px-1 sm:px-2 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                     selectedFuel === type
                       ? ' text-green-600 shadow-md'
                       : 'text-white hover:text-green-600'
