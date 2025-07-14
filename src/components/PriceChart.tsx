@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, ChevronDown, Check, Share, X, Copy } from 'lucide-react';
+import { Download, ChevronDown, Check, Share, X, Copy, TrendingUp } from 'lucide-react';
 import { XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { getFuelTypes, getRegions, getStates } from './data/petroleumdata';
 
@@ -234,7 +234,7 @@ const PriceChart: React.FC = () => {
                 <Download className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </button>
             </div>
-            <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto">
+            <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
               {fuelTypes.map((type) => (
                 <button
                   key={type}
@@ -251,33 +251,6 @@ const PriceChart: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Price Display */}
-        {/*}
-        <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-6">
-              <div>
-                <p className="text-3xl font-bold text-gray-900">₦{currentPrice.toFixed(2)}</p>
-                <p className="text-sm text-gray-500">Current Price</p>
-              </div>
-              <div className={`flex items-center space-x-2 px-3 py-1 rounded-full ${
-                isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-              }`}>
-                <span className="text-sm font-medium">
-                  {isPositive ? '+' : ''}₦{priceChange.toFixed(2)}
-                </span>
-                <span className="text-sm">
-                  ({isPositive ? '+' : ''}{percentageChange.toFixed(2)}%)
-                </span>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-500">24h Volume</p>
-              <p className="text-lg font-semibold text-gray-700">₦2.4M</p>
-            </div>
-          </div>
-        </div> */}
 
         {/* Chart Area */}
         <div className="p-4 sm:p-6">
@@ -306,7 +279,7 @@ const PriceChart: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex items-center space-x-2 sm:space-x-4 overflow-x-auto">
+            <div className="flex items-center space-x-2 sm:space-x-4 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
               <CustomDropdown
                 options={regions}
                 selected={selectedRegion}
@@ -333,14 +306,19 @@ const PriceChart: React.FC = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
-          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
-                <Share className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-xs sm:text-sm font-medium hidden sm:inline">Share</span>
-              </button>
+            <div className="flex items-center justify-between p-4 sm:p-6 ">
+              <div className="flex items-center space-x-4">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                  Share Image
+                </h3>
+                <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+                  <Share className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="text-xs sm:text-sm font-medium hidden sm:inline">Share</span>
+                </button>
+              </div>
               <button 
                 onClick={() => setShowModal(false)}
                 className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -350,21 +328,135 @@ const PriceChart: React.FC = () => {
             </div>
 
             {/* Modal Content */}
-            <div className="p-4 sm:p-6 overflow-y-auto">
-              <div className="bg-gray-100 rounded-xl p-2 sm:p-4">
-                <ChartComponent />
+            <div className="p-4 sm:p-6 bg-black">
+              {/* Price Display */}
+              {/*
+              <div className="mb-6 p-4 bg-gray-50 rounded-lg border">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center space-x-6">
+                    <div>
+                      <p className="text-2xl sm:text-3xl font-bold text-gray-900">
+                        ₦{chartData[chartData.length - 1]?.price.toFixed(2) || '0.00'}
+                      </p>
+                      <p className="text-sm text-gray-500">Current {selectedFuel} Price</p>
+                    </div>
+                    <div className="flex items-center space-x-2 px-3 py-1 rounded-full bg-green-100 text-green-700">
+                      <TrendingUp className="w-4 h-4" />
+                      <span className="text-sm font-medium">+2.4%</span>
+                    </div>
+                  </div>
+                  <div className="text-left sm:text-right">
+                    <p className="text-sm text-gray-500">Period: {selectedPeriod}</p>
+                    <p className="text-sm text-gray-500">Region: {selectedRegion}</p>
+                  </div>
+                </div>
+              </div> */}
+
+              {/* Chart Container */}
+              <div className="bg-black rounded-lg p-4">
+                <div className="h-96 sm:h-[500px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                      <defs>
+                        <linearGradient id="modalColorPrice" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                          <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                      <XAxis 
+                        dataKey="index" 
+                        axisLine={true}
+                        tickLine={true}
+                        tick={{ fontSize: 12, fill: '#6b7280' }}
+                        stroke="#d1d5db"
+                      />
+                      <YAxis 
+                        axisLine={true}
+                        tickLine={true}
+                        tick={{ fontSize: 12, fill: '#6b7280' }}
+                        stroke="#d1d5db"
+                        domain={['dataMin - 5', 'dataMax + 5']}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Area
+                        type="monotone"
+                        dataKey="price"
+                        stroke="#10b981"
+                        strokeWidth={3}
+                        fill="url(#modalColorPrice)"
+                        dot={false}
+                        activeDot={{ 
+                          r: 6, 
+                          fill: '#10b981',
+                          stroke: '#ffffff',
+                          strokeWidth: 3,
+                          filter: 'drop-shadow(0 2px 4px rgba(16, 185, 129, 0.3))'
+                        }}
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Chart Controls */}
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center space-x-1 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-300">
+                  {periods.map((period) => (
+                    <button
+                      key={period}
+                      onClick={() => setSelectedPeriod(period)}
+                      className={`px-3 py-2 text-sm font-medium transition-all duration-200 rounded-lg whitespace-nowrap ${
+                        selectedPeriod === period
+                          ? 'bg-green-600 text-white shadow-lg'
+                          : 'text-gray-600 hover:text-green-600 hover:bg-white'
+                      }`}
+                    >
+                      {period}
+                    </button>
+                  ))}
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <select 
+                    value={selectedRegion} 
+                    onChange={(e) => setSelectedRegion(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  >
+                    {regions.map(region => (
+                      <option key={region} value={region}>{region}</option>
+                    ))}
+                  </select>
+                  
+                  <select 
+                    value={selectedState} 
+                    onChange={(e) => setSelectedState(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  >
+                    {states.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-t border-gray-200 gap-2">
-              <button className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
-                <Download className="w-4 h-4" />
-                <span className="font-medium hidden sm:inline">Download</span>
-              </button>
-              <button className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-6 py-2 sm:py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm">
-                <Copy className="w-4 h-4" />
-                <span className="font-medium hidden sm:inline">Copy</span>
+            <div className="flex items-center justify-between p-4 sm:p-6 border-t border-gray-200 bg-gray-50 gap-2">
+              <div className="flex items-center space-x-2">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
+                  <Download className="w-4 h-4" />
+                  <span>Download PNG</span>
+                </button>
+                <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+                  <Copy className="w-4 h-4" />
+                  <span>Copy Link</span>
+                </button>
+              </div>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+              >
+                Close
               </button>
             </div>
           </div>
