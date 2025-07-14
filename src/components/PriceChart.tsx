@@ -234,7 +234,15 @@ const PriceChart: React.FC = () => {
                 <Download className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               </button>
             </div>
-            <div className="flex items-center space-x-1 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
+            <div 
+              className="flex items-center space-x-1 overflow-x-auto scrollbar-hide" 
+            
+            >
+              <style>{`
+                .flex.items-center.space-x-1.overflow-x-auto::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
               {fuelTypes.map((type) => (
                 <button
                   key={type}
@@ -279,7 +287,18 @@ const PriceChart: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex items-center space-x-2 sm:space-x-4 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
+            <div 
+              className="flex items-center space-x-2 sm:space-x-4 overflow-x-auto" 
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none'
+              }}
+            >
+              <style>{`
+                .flex.items-center.overflow-x-auto::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
               <CustomDropdown
                 options={regions}
                 selected={selectedRegion}
@@ -400,7 +419,18 @@ const PriceChart: React.FC = () => {
 
               {/* Chart Controls */}
               <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg">
-                <div className="flex items-center space-x-1 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-300">
+                <div 
+                  className="flex items-center space-x-1 overflow-x-auto" 
+                  style={{ 
+                    scrollbarWidth: 'none', 
+                    msOverflowStyle: 'none'
+                  }}
+                >
+                  <style>{`
+                    .flex.items-center.space-x-1.overflow-x-auto::-webkit-scrollbar {
+                      display: none;
+                    }
+                  `}</style>
                   {periods.map((period) => (
                     <button
                       key={period}

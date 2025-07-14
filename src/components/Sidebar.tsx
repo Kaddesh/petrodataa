@@ -101,7 +101,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Collapse Button */}
         <button
           onClick={onToggle}
-          className="hidden lg:block absolute top-20 -right-4 transform -translate-y-1/2 w-8 h-8 bg-gray-400 hover:bg-gray-500 rounded-full flex items-center justify-center transition-colors z-10"
+          className="hidden lg:flex absolute top-20 -right-4 transform -translate-y-1/2 w-8 h-8 bg-gray-400 hover:bg-gray-500 rounded-full items-center justify-center transition-colors z-10"
         >
           <span className="text-white font-bold text-sm">
             {collapsed ? '>>' : '<<'}

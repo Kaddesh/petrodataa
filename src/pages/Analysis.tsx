@@ -73,7 +73,7 @@ const Analysis: React.FC = () => {
             <button
               key={type.id}
               onClick={() => setActiveAnalysis(type.id)}
-                className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 transition-all duration-200 whitespace-nowrap ${
+                className={`flex items-center space-x-1 sm:space-x-2 px-2 py-2 transition-all duration-200 whitespace-nowrap ${
                 activeAnalysis === type.id
                   ? ' text-green-600 shadow-sm'
                   : 'text-gray-400 hover:text-green-800'
